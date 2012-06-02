@@ -1,0 +1,178 @@
+// gg 0.1
+// Copyright (c) 2012 Evan Moran
+// gg is freely distributable under the MIT license.
+// opensource.org/licenses/mit-license
+
+$ggColumnWidth = 80px
+$ggColumnCount = 12
+$ggBorderWidth = 20px
+
+// $ggPercents = 100  92  84  75  66  58  50  40  33  25  16   8
+// $ggColumns  =  12  11  10   9   8   7   6   5   4   3   2   1
+
+$ggPercents = 100  75  66  50  33  25
+$ggColumns  =  12   9   8   6   4   3
+$ggLiquidPercents = 100  75  66.6666  50  33.3333  25
+
+// (?) name for my children maintain there sizing
+
+
+// General create grid method
+ggCreateGrid(gridWidth, borderWidth)
+  columnWidth = gridWidth / $ggColumnCount
+  .gg
+    position: relative
+    width: gridWidth - borderWidth
+    margin: 0 auto
+    padding: borderWidth
+    // line-height: ???
+
+  // .gg#
+  for c, ix in $ggColumns
+    percent = $ggPercents[ix]
+    .gg{percent}
+      width: (columnWidth * c) - borderWidth
+      margin-right: borderWidth
+      margin-bottom: borderWidth
+      float: left
+      display: inline
+
+      // .gg# .gg#
+      for c2, ix2 in $ggColumns
+        columns = c * c2 / $ggColumnCount
+        percent = $ggPercents[ix2]
+        .gg{percent}
+        .ggphone .gg{percent}
+          width: floor(columnWidth * columns - borderWidth)
+          margin-right: borderWidth
+          margin-bottom: borderWidth
+
+        // .gg# .offset#
+        .offset{percent}
+        .ggphone .offset{percent}
+          margin-left: columnWidth * columns
+
+  // .offset#
+  for c, ix in $ggColumns
+    .offset{$ggPercents[ix]}
+    .ggphone .offset{$ggPercents[ix]}
+      margin-left: columnWidth * c
+
+  // .row
+  // TODO: consider using 'gg' for row for full nesting magic
+  .row
+  .ggphone .row
+    display: block
+    margin-right: -1 * borderWidth
+    zoom: 1
+    &:before
+    &:after
+      width: 0
+      overflow: hidden
+      // Clearfix
+      content: "\0020"
+      display: block
+      height: 0
+      clear: both
+      visibility: hidden
+    &:after
+      clear: both
+
+ggCreateLiquidGrid(borderWidthPercent)
+  // .gg#
+  for c, ix in $ggColumns
+    percent = $ggPercents[ix]
+    liquidPercent = $ggLiquidPercents[ix]
+    .gg{percent}
+      width: liquidPercent - borderWidthPercent
+      margin-right: borderWidthPercent
+      margin-bottom: borderWidthPercent
+      float: left
+      display: inline
+
+      // .gg# .gg#
+      for c2, ix2 in $ggColumns
+        percentChild = $ggPercents[ix2]
+        liquidPercentChild = $ggLiquidPercents[ix2]
+        .gg{percentChild}
+          width: liquidPercentChild - (borderWidthPercent * liquidPercent)
+          margin-right: borderWidthPercent * liquidPercent
+          margin-bottom: borderWidthPercent * liquidPercent
+
+        // .gg# .offset#
+        .offset{percentChild}
+          margin-left: liquidPercentChild
+
+  // .row
+  // TODO: consider using 'gg' for row for full nesting magic
+  .row
+    display: block
+    margin-right: -1 * borderWidthPercent
+    zoom: 1
+    &:before
+    &:after
+      width: 0
+      overflow: hidden
+      // Clearfix
+      content: "\0020"
+      display: block
+      height: 0
+      clear: both
+      visibility: hidden
+    &:after
+      clear: both
+
+
+// -----------------------------------------------------
+// mobile first!
+// -----------------------------------------------------
+.gg
+  position: relative
+  margin: 0 auto
+  padding: 10px
+for percent in $ggPercents
+  .gg{percent}
+    width: 100%
+    margin-left: 0
+    margin-right: 0
+    display: block
+
+// Grid if we're in a ggphone thingy
+.ggphone
+  ggCreateLiquidGrid(2.5%)
+
+// // -----------------------------------------------------
+// // phone (landscape)
+// // -----------------------------------------------------
+// //@media only screen and (min-width: 768px) and (max-width: 959px)
+// @media only screen and (min-width: 480px)
+//   .ggphone
+//     ggCreateGrid(480px, $ggBorderWidth)
+
+
+// -----------------------------------------------------
+// tablet
+// -----------------------------------------------------
+@media only screen and (min-width: 788px) and (max-width: 980px)
+  ggCreateGrid(768px, $ggBorderWidth)
+
+// -----------------------------------------------------
+// desktop
+// -----------------------------------------------------
+@media only screen and (min-width: 981px)
+  ggCreateGrid(960px, $ggBorderWidth)
+
+
+// -----------------------------------------------------
+//  vente (comment in if you care..)
+// -----------------------------------------------------
+// @media only screen and (min-width: 1200px)
+//   ggCreateGrid(1200px, $ggBorderWidth)
+
+
+// Help people who get confused...
+.row
+  >.row
+    margin-right: 0
+
+
