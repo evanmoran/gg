@@ -1,4 +1,4 @@
 gg
 ==
 
-GoodGrid™. The end game of grids.
+The end game of grids.
