@@ -1,4 +1,4 @@
-// gg 0.1
+// gg 0.2.0
 // Copyright (c) 2012 Evan Moran
 // gg is freely distributable under the MIT license.
 // opensource.org/licenses/mit-license
@@ -6,121 +6,56 @@
 $ggColumnWidth = 80px
 $ggColumnCount = 12
 $ggBorderWidth = 20px
+$ggBorderWidthPercent = 2.5%
 
-// $ggPercents = 100  92  84  75  66  58  50  40  33  25  16   8
-// $ggColumns  =  12  11  10   9   8   7   6   5   4   3   2   1
-
-$ggPercents = 100  75  66  50  33  25
-$ggColumns  =  12   9   8   6   4   3
-$ggLiquidPercents = 100  75  66.6666  50  33.3333  25
-
-// (?) name for my children maintain there sizing
-
+$ggPercents =         100  75  66     50  33     25
+$ggLiquidPercents =   100  75  66.66  50  33.33  25
+$ggColumns  =          12   9   8      6   4      3
 
 // General create grid method
 ggCreateGrid(gridWidth, borderWidth)
   columnWidth = gridWidth / $ggColumnCount
   .gg
-    position: relative
     width: gridWidth - borderWidth
-    margin: 0 auto
-    padding: borderWidth
-    // line-height: ???
 
   // .gg#
   for c, ix in $ggColumns
     percent = $ggPercents[ix]
     .gg{percent}
       width: (columnWidth * c) - borderWidth
-      margin-right: borderWidth
-      margin-bottom: borderWidth
-      float: left
-      display: inline
 
       // .gg# .gg#
       for c2, ix2 in $ggColumns
         columns = c * c2 / $ggColumnCount
         percent = $ggPercents[ix2]
         .gg{percent}
-        .ggphone .gg{percent}
           width: floor(columnWidth * columns - borderWidth)
-          margin-right: borderWidth
-          margin-bottom: borderWidth
 
-        // .gg# .offset#
-        .offset{percent}
-        .ggphone .offset{percent}
-          margin-left: columnWidth * columns
+        // .gg# .o#
+        .o{percent}
+          margin-left: floor(columnWidth * columns)
 
-  // .offset#
+  // .o#
   for c, ix in $ggColumns
-    .offset{$ggPercents[ix]}
-    .ggphone .offset{$ggPercents[ix]}
-      margin-left: columnWidth * c
+    .o{$ggPercents[ix]}
+      margin-left: floor(columnWidth * c)
 
   // .row
-  // TODO: consider using 'gg' for row for full nesting magic
   .row
-  .ggphone .row
-    display: block
     margin-right: -1 * borderWidth
-    zoom: 1
-    &:before
-    &:after
-      width: 0
-      overflow: hidden
-      // Clearfix
-      content: "\0020"
-      display: block
-      height: 0
-      clear: both
-      visibility: hidden
-    &:after
-      clear: both
 
-ggCreateLiquidGrid(borderWidthPercent)
+ggCreateLiquidGrid(borderWidthPercent, borderWidth)
+
   // .gg#
   for c, ix in $ggColumns
     percent = $ggPercents[ix]
     liquidPercent = $ggLiquidPercents[ix]
     .gg{percent}
       width: liquidPercent - borderWidthPercent
-      margin-right: borderWidthPercent
-      margin-bottom: borderWidthPercent
-      float: left
-      display: inline
 
-      // .gg# .gg#
-      for c2, ix2 in $ggColumns
-        percentChild = $ggPercents[ix2]
-        liquidPercentChild = $ggLiquidPercents[ix2]
-        .gg{percentChild}
-          width: liquidPercentChild - (borderWidthPercent * liquidPercent)
-          margin-right: borderWidthPercent * liquidPercent
-          margin-bottom: borderWidthPercent * liquidPercent
-
-        // .gg# .offset#
-        .offset{percentChild}
-          margin-left: liquidPercentChild
-
-  // .row
-  // TODO: consider using 'gg' for row for full nesting magic
-  .row
-    display: block
-    margin-right: -1 * borderWidthPercent
-    zoom: 1
-    &:before
-    &:after
-      width: 0
-      overflow: hidden
-      // Clearfix
-      content: "\0020"
-      display: block
-      height: 0
-      clear: both
-      visibility: hidden
-    &:after
-      clear: both
+    // .gg# .o#
+    .o{percent}
+      margin-left: unit(liquidPercent, "%")
 
 
 // -----------------------------------------------------
@@ -130,25 +65,62 @@ ggCreateLiquidGrid(borderWidthPercent)
   position: relative
   margin: 0 auto
   padding: 10px
-for percent in $ggPercents
-  .gg{percent}
-    width: 100%
-    margin-left: 0
-    margin-right: 0
+
+.gg100, .gg75, .gg66, .gg50, .gg33, .gg25
+  width: 100%
+  display: block
+
+.row
+  display: block
+  zoom: 1
+  &:before
+  &:after
+    width: 0
+    overflow: hidden
+    // Clearfix
+    content: "\0020"
     display: block
+    height: 0
+    clear: both
+    visibility: hidden
+  &:after
+    clear: both
 
-// Grid if we're in a ggphone thingy
-.ggphone
-  ggCreateLiquidGrid(2.5%)
+// Help people who get confused...
+.row
+  >.row
+    margin-right: 0
 
-// // -----------------------------------------------------
-// // phone (landscape)
-// // -----------------------------------------------------
-// //@media only screen and (min-width: 768px) and (max-width: 959px)
-// @media only screen and (min-width: 480px)
-//   .ggphone
-//     ggCreateGrid(480px, $ggBorderWidth)
+// -----------------------------------------------------
+// Not phone
+// -----------------------------------------------------
 
+@media only screen and (min-width: 788px)
+  .gg
+    padding: $ggBorderWidth
+
+  .gg100, .gg75, .gg66, .gg50, .gg33, .gg25,
+  .gel .gg100, .gel .gg75, .gel .gg66, .gel .gg50, .gel .gg33, .gel .gg25
+    margin-right: $ggBorderWidth
+    margin-bottom: $ggBorderWidth
+    float: left
+    display: inline
+
+// -----------------------------------------------------
+// phone
+// -----------------------------------------------------
+@media only screen and (max-width: 787px)
+  .gel
+    .gg100, .gg75, .gg66, .gg50, .gg33, .gg25
+      margin-right: $ggBorderWidthPercent
+      margin-bottom: $ggBorderWidthPercent
+      float: left
+      display: inline
+
+    .row, &.row
+      margin-right: unit(-1 * $ggBorderWidthPercent, "%")
+
+    ggCreateLiquidGrid(2.5%, 10px)
 
 // -----------------------------------------------------
 // tablet
@@ -162,7 +134,6 @@ for percent in $ggPercents
 @media only screen and (min-width: 981px)
   ggCreateGrid(960px, $ggBorderWidth)
 
-
 // -----------------------------------------------------
 //  vente (comment in if you care..)
 // -----------------------------------------------------
@@ -170,9 +141,5 @@ for percent in $ggPercents
 //   ggCreateGrid(1200px, $ggBorderWidth)
 
 
-// Help people who get confused...
-.row
-  >.row
-    margin-right: 0
 
 
