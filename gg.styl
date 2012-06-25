@@ -95,7 +95,7 @@ ggCreateLiquidGrid(borderWidthPercent, borderWidth)
 // Not phone
 // -----------------------------------------------------
 
-@media only screen and (min-width: 788px)
+@media only screen and (min-width: 740px)
   .gg
     padding: $ggBorderWidth
 
@@ -109,7 +109,7 @@ ggCreateLiquidGrid(borderWidthPercent, borderWidth)
 // -----------------------------------------------------
 // phone
 // -----------------------------------------------------
-@media only screen and (max-width: 787px)
+@media only screen and (max-width: 739px)
   .gel
     .gg100, .gg75, .gg66, .gg50, .gg33, .gg25
       margin-right: $ggBorderWidthPercent
@@ -125,8 +125,8 @@ ggCreateLiquidGrid(borderWidthPercent, borderWidth)
 // -----------------------------------------------------
 // tablet
 // -----------------------------------------------------
-@media only screen and (min-width: 788px) and (max-width: 980px)
-  ggCreateGrid(768px, $ggBorderWidth)
+@media only screen and (min-width: 740px) and (max-width: 980px)
+  ggCreateGrid(720px, $ggBorderWidth)
 
 // -----------------------------------------------------
 // desktop
@@ -135,11 +135,30 @@ ggCreateLiquidGrid(borderWidthPercent, borderWidth)
   ggCreateGrid(960px, $ggBorderWidth)
 
 // -----------------------------------------------------
-//  vente (comment in if you care..)
+//  vente (comment in if you care...)
 // -----------------------------------------------------
+
 // @media only screen and (min-width: 1200px)
 //   ggCreateGrid(1200px, $ggBorderWidth)
 
+// -----------------------------------------------------
+//  jumbo (comment in if you care...)
+// -----------------------------------------------------
+
+// @media only screen and (min-width: 1440px)
+//   ggCreateGrid(1440px, $ggBorderWidth)
 
 
 
+// -----------------------------------------------------
+// Resolution breakdown
+// -----------------------------------------------------
+
+// 480 (missing 1/9)
+// 720 (all)                      (tablet)
+// 768 (missing 1/5, 1/9, 1/10)
+// 960 (missing 1/9)              (desktop)
+// 1080 (missing 1/16)
+// 1200 (missing 1/9)             (vente)
+// 1280 (missing 1/3, 1/9)
+// 1440 (all)                     (jumbo)
