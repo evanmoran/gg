@@ -1,0 +1,50 @@
+templates = user:
+  role: 'my role'
+
+doctype 5
+html ->
+  head ->
+    meta charset: 'utf-8'
+    title "#{@title or 'Untitled'} | A completely plausible website"
+    meta(name: 'description', content: @description) if @description?
+
+    link rel: 'stylesheet', href: '/css/app.css'
+
+    style '''
+      body {font-family: sans-serif}
+      header, nav, section, footer {display: block}
+    '''
+
+    comment 'Stylus is supported as well'
+
+    stylus '''
+      body
+        margin: 0
+    '''
+
+    script src: '/js/jquery.js'
+
+    coffeescript ->
+      $(document).ready ->
+        alert 'Alerts suck!'
+  body ->
+    header ->
+      h1 @title or 'Untitled'
+
+      nav ->
+        ul ->
+          (li -> a href: '/', -> 'Home') unless @path is '/'
+          li -> a href: '/chunky', -> 'Bacon!'
+          switch 'owner'
+            when 'owner', 'admin'
+              li -> a href: '/admin', -> 'Secret Stuff'
+            when 'vip'
+              li -> a href: '/vip', -> 'Exclusive Stuff'
+            else
+              li -> a href: '/commoners', -> 'Just Stuff'
+
+
+    footer ->
+      # CoffeeScript comments. Not visible in the output document.
+      comment 'HTML comments.'
+      p 'Bye!'
