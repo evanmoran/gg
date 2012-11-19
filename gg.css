@@ -32,7 +32,7 @@
 .row >.row {
   margin-right: 0;
 }
-@media only screen and (min-width: 788px) {
+@media only screen and (min-width: 740px) {
   .gg {
     padding: 20px;
   }
@@ -54,7 +54,7 @@
     display: inline;
   }
 }
-@media only screen and (max-width: 787px) {
+@media only screen and (max-width: 739px) {
   .gel .gg100,
   .gel .gg75,
   .gel .gg66,
@@ -83,10 +83,10 @@
     margin-left: 75%;
   }
   .gel .gg66 {
-    width: 64.166%;
+    width: 64.16%;
   }
   .gel .o66 {
-    margin-left: 66.666%;
+    margin-left: 66.66%;
   }
   .gel .gg50 {
     width: 47.5%;
@@ -95,10 +95,10 @@
     margin-left: 50%;
   }
   .gel .gg33 {
-    width: 30.8333%;
+    width: 30.83%;
   }
   .gel .o33 {
-    margin-left: 33.3333%;
+    margin-left: 33.33%;
   }
   .gel .gg25 {
     width: 22.5%;
@@ -107,261 +107,261 @@
     margin-left: 25%;
   }
 }
-@media only screen and (min-width: 788px) and (max-width: 980px) {
+@media only screen and (min-width: 740px) and (max-width: 980px) {
   .gg {
-    width: 748px;
+    width: 700px;
   }
   .gg100 {
-    width: 748px;
+    width: 700px;
   }
   .gg100 .gg100 {
-    width: 748px;
+    width: 700px;
   }
   .gg100 .o100 {
-    margin-left: 768px;
+    margin-left: 720px;
   }
   .gg100 .gg75 {
-    width: 556px;
+    width: 520px;
   }
   .gg100 .o75 {
-    margin-left: 576px;
+    margin-left: 540px;
   }
   .gg100 .gg66 {
-    width: 492px;
+    width: 460px;
   }
   .gg100 .o66 {
-    margin-left: 512px;
+    margin-left: 480px;
   }
   .gg100 .gg50 {
-    width: 364px;
+    width: 340px;
   }
   .gg100 .o50 {
-    margin-left: 384px;
+    margin-left: 360px;
   }
   .gg100 .gg33 {
-    width: 236px;
+    width: 220px;
   }
   .gg100 .o33 {
-    margin-left: 256px;
+    margin-left: 240px;
   }
   .gg100 .gg25 {
-    width: 172px;
+    width: 160px;
   }
   .gg100 .o25 {
-    margin-left: 192px;
+    margin-left: 180px;
   }
   .gg75 {
-    width: 556px;
+    width: 520px;
   }
   .gg75 .gg100 {
-    width: 556px;
+    width: 520px;
   }
   .gg75 .o100 {
-    margin-left: 576px;
+    margin-left: 540px;
   }
   .gg75 .gg75 {
-    width: 412px;
+    width: 385px;
   }
   .gg75 .o75 {
-    margin-left: 432px;
+    margin-left: 405px;
   }
   .gg75 .gg66 {
-    width: 364px;
+    width: 340px;
   }
   .gg75 .o66 {
-    margin-left: 384px;
+    margin-left: 360px;
   }
   .gg75 .gg50 {
-    width: 268px;
+    width: 250px;
   }
   .gg75 .o50 {
-    margin-left: 288px;
+    margin-left: 270px;
   }
   .gg75 .gg33 {
-    width: 172px;
+    width: 160px;
   }
   .gg75 .o33 {
-    margin-left: 192px;
+    margin-left: 180px;
   }
   .gg75 .gg25 {
-    width: 124px;
+    width: 115px;
   }
   .gg75 .o25 {
-    margin-left: 144px;
+    margin-left: 135px;
   }
   .gg66 {
-    width: 492px;
+    width: 460px;
   }
   .gg66 .gg100 {
-    width: 492px;
+    width: 460px;
   }
   .gg66 .o100 {
-    margin-left: 512px;
+    margin-left: 480px;
   }
   .gg66 .gg75 {
-    width: 364px;
+    width: 340px;
   }
   .gg66 .o75 {
-    margin-left: 384px;
+    margin-left: 360px;
   }
   .gg66 .gg66 {
-    width: 321px;
+    width: 300px;
   }
   .gg66 .o66 {
-    margin-left: 341px;
+    margin-left: 320px;
   }
   .gg66 .gg50 {
-    width: 236px;
+    width: 220px;
   }
   .gg66 .o50 {
-    margin-left: 256px;
+    margin-left: 240px;
   }
   .gg66 .gg33 {
-    width: 150px;
+    width: 140px;
   }
   .gg66 .o33 {
-    margin-left: 170px;
+    margin-left: 160px;
   }
   .gg66 .gg25 {
-    width: 108px;
+    width: 100px;
   }
   .gg66 .o25 {
-    margin-left: 128px;
+    margin-left: 120px;
   }
   .gg50 {
-    width: 364px;
+    width: 340px;
   }
   .gg50 .gg100 {
-    width: 364px;
+    width: 340px;
   }
   .gg50 .o100 {
-    margin-left: 384px;
+    margin-left: 360px;
   }
   .gg50 .gg75 {
-    width: 268px;
+    width: 250px;
   }
   .gg50 .o75 {
-    margin-left: 288px;
+    margin-left: 270px;
   }
   .gg50 .gg66 {
-    width: 236px;
+    width: 220px;
   }
   .gg50 .o66 {
-    margin-left: 256px;
+    margin-left: 240px;
   }
   .gg50 .gg50 {
-    width: 172px;
+    width: 160px;
   }
   .gg50 .o50 {
-    margin-left: 192px;
+    margin-left: 180px;
   }
   .gg50 .gg33 {
-    width: 108px;
+    width: 100px;
   }
   .gg50 .o33 {
-    margin-left: 128px;
+    margin-left: 120px;
   }
   .gg50 .gg25 {
-    width: 76px;
+    width: 70px;
   }
   .gg50 .o25 {
-    margin-left: 96px;
+    margin-left: 90px;
   }
   .gg33 {
-    width: 236px;
+    width: 220px;
   }
   .gg33 .gg100 {
-    width: 236px;
+    width: 220px;
   }
   .gg33 .o100 {
-    margin-left: 256px;
+    margin-left: 240px;
   }
   .gg33 .gg75 {
-    width: 172px;
+    width: 160px;
   }
   .gg33 .o75 {
-    margin-left: 192px;
+    margin-left: 180px;
   }
   .gg33 .gg66 {
-    width: 150px;
+    width: 140px;
   }
   .gg33 .o66 {
-    margin-left: 170px;
+    margin-left: 160px;
   }
   .gg33 .gg50 {
-    width: 108px;
+    width: 100px;
   }
   .gg33 .o50 {
-    margin-left: 128px;
+    margin-left: 120px;
   }
   .gg33 .gg33 {
-    width: 65px;
+    width: 60px;
   }
   .gg33 .o33 {
-    margin-left: 85px;
+    margin-left: 80px;
   }
   .gg33 .gg25 {
-    width: 44px;
+    width: 40px;
   }
   .gg33 .o25 {
-    margin-left: 64px;
+    margin-left: 60px;
   }
   .gg25 {
-    width: 172px;
+    width: 160px;
   }
   .gg25 .gg100 {
-    width: 172px;
+    width: 160px;
   }
   .gg25 .o100 {
-    margin-left: 192px;
+    margin-left: 180px;
   }
   .gg25 .gg75 {
-    width: 124px;
+    width: 115px;
   }
   .gg25 .o75 {
-    margin-left: 144px;
+    margin-left: 135px;
   }
   .gg25 .gg66 {
-    width: 108px;
+    width: 100px;
   }
   .gg25 .o66 {
-    margin-left: 128px;
+    margin-left: 120px;
   }
   .gg25 .gg50 {
-    width: 76px;
+    width: 70px;
   }
   .gg25 .o50 {
-    margin-left: 96px;
+    margin-left: 90px;
   }
   .gg25 .gg33 {
-    width: 44px;
+    width: 40px;
   }
   .gg25 .o33 {
-    margin-left: 64px;
+    margin-left: 60px;
   }
   .gg25 .gg25 {
-    width: 28px;
+    width: 25px;
   }
   .gg25 .o25 {
-    margin-left: 48px;
+    margin-left: 45px;
   }
   .o100 {
-    margin-left: 768px;
+    margin-left: 720px;
   }
   .o75 {
-    margin-left: 576px;
+    margin-left: 540px;
   }
   .o66 {
-    margin-left: 512px;
+    margin-left: 480px;
   }
   .o50 {
-    margin-left: 384px;
+    margin-left: 360px;
   }
   .o33 {
-    margin-left: 256px;
+    margin-left: 240px;
   }
   .o25 {
-    margin-left: 192px;
+    margin-left: 180px;
   }
   .row {
     margin-right: -20px;

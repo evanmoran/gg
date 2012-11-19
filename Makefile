@@ -1,14 +1,20 @@
-
-OUTPUT_FILES = index.html scripts/index.js styles/index.css
 SRC_DIR = src
 STYLES_DIR = .
-NIB_PATH = /usr/local/share/npm/lib/node_modules/nib
 
-# all: build
+all: build install
 
-# build: gg.css
+build: gg.css
 
-# $(STYLES_DIR)/%.css: $(SRC_DIR)/%.styl
-# 	stylus -o $(STYLES_DIR) $<
+install: www/styles/gg.css
 
-# install:
+gg.css: $(SRC_DIR)/gg.styl
+	stylus -c -o $(STYLES_DIR) $<
+	mv gg.css gg.small.css
+	stylus -o $(STYLES_DIR) $<
+	cat gg.css | pbcopy
+	sub gg.min.css
+	open http://www.csscompressor.com/
+
+www/styles/gg.css: gg.css
+	cp gg.css www/styles/gg.css
+	cp gg.min.css www/styles/gg.min.css
