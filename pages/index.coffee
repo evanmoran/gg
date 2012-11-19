@@ -1,0 +1,6 @@
+$ ->
+  console.log 'index started'
+
+
+
+

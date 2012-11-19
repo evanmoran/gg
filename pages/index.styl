@@ -1,0 +1,52 @@
+
+@import "mixins/solarized"
+
+.gg
+  background-color: white
+  box-shadow: 0px 0px 6px 1px #AAA
+
+.watch-img
+  width: 90px
+  height: 150px
+  display: inline-block
+
+.watch-css
+  background-image: smiteImage('watch2.jpg')
+  background-size:90px 150px
+  width: 90px
+  height: 150px
+  display: inline-block
+
+.watch-css-inline
+  background-image: smiteImageInline('watch3.jpg')
+  background-size:90px 150px
+  width: 90px
+  height: 150px
+  display: inline-block
+
+gridWithShadow(color)
+  text-align: center
+  background-color: color
+  color: white
+  box-shadow: 2px 2px 3px 0px rgba(1, 1, 1, 0.5)
+
+.blue
+  gridWithShadow: solarBlue
+
+.green
+  gridWithShadow: solarGreen
+
+.purple
+  gridWithShadow: solarMagenta
+
+.orange
+  gridWithShadow: solarOrange
+
+.shadow
+  box-shadow: 2px 2px 4px 1px rgba(1, 1, 1, 0.4)
+  background-color: white
+
+  .label
+    text-align: center
+    margin: 8px 0 14px
+

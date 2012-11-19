@@ -1,0 +1,130 @@
+
+# Constants
+# --------------------------------------------------------------
+
+@title = "gg"
+@description = "A website documenting gg, a css framework."
+@page = 'index'
+@venders = ['jquery.js', 'underscore.js']
+
+# _
+# --------------------------------------------------------------
+
+ArrayP = Array.prototype
+_ =
+  indexOf: ArrayP.indexOf
+
+# Helpers
+# --------------------------------------------------------------
+
+addVender = (venders = @venders) ->
+  script src: "vender/#{vender}" for vender in venders
+
+# Grid creation helpers
+# --------------------------------------------------------------
+
+gridCreate = (data, color) ->
+  for value in data
+    span class:'row', ->
+      for percent in value
+        span class: "gg#{percent} #{color}", "#{percent}%"
+
+gridOffsetCreate = (fraction, color, isGrid) ->
+  columns = [0..12]
+  percents = [0,8,16,25,33,40,50,58,66,75,84,92,100]
+  percent = percents[_.indexOf columns, 12/fraction]
+  for f in [1..fraction]
+    ix = _.indexOf(columns, (f-1)* 12/fraction)
+    div class: 'row', ->
+      span class: "gg#{percent} o#{percents[ix]} #{color}", "#{percent}"
+
+pyramid = [[100], [50,50], [33,33,33], [25,25,25,25]]
+
+# Template
+# --------------------------------------------------------------
+
+doctype 5
+html ->
+  head ->
+    meta charset: 'utf-8'
+    title "#{@title or 'Untitled'} | The endgame of css frameworks"
+    meta(name: 'description', content: @description) if @description?
+
+    # Add all vender scripts
+    addVender @venders
+
+    # Link/Script to this page
+    link rel: 'stylesheet', href: "styles/#{@page}.css"
+    script src: "scripts/#{@page}.js"
+
+    # Woot!
+    link rel: 'stylesheet', href: "styles/gg.css"
+
+  body ->
+
+    header ->
+      h1 class: 'title', "gg"
+      div class:'subtitle', "the end game of grids"
+
+    h3 "GG grid is based on percent"
+    gridCreate pyramid, 'blue'
+
+
+    h3 "Thirds (nested)"
+
+    div class:'row', ->
+      div class:'gg33 shadow gel', ->
+        div "label", "33%"
+        gridCreate pyramid, 'purple'
+      div class:'gg66 shadow', ->
+        div "label", "66%"
+        gridCreate pyramid, 'green'
+
+    h3 "Quarters (nested)"
+    div class:'row', ->
+      div class:'gg25 shadow', ->
+        div "label", "25%"
+        gridCreate pyramid, 'purple'
+      div class:'gg75 shadow gel', ->
+        div "label", "75%"
+        gridCreate pyramid, 'green'
+
+    h3 "Wrapping"
+    div class: 'row', ->
+      gridCreate [[50, 25, 25, 33, 66]], 'orange'
+
+    h3 "Offset"
+    for i in [2,3,4]
+      gridOffsetCreate i, 'blue'
+
+    h3 "Nested offsets"
+    div class:'row', ->
+      div class:'gg33 shadow', ->
+        gridOffsetCreate 2, 'blue'
+      div class:'gg33 shadow', ->
+        gridOffsetCreate 3, 'blue'
+      div class:'gg33 shadow', ->
+        gridOffsetCreate 4, 'blue'
+
+    h3 "Offset (grid)"
+    div class:'gel', ->
+      for i in [2,3,4]
+        gridOffsetCreate i, 'blue'
+
+    h3 "Nested offsets (grid"
+    div class:'row gel', ->
+      div class:'gg33 shadow', ->
+        gridOffsetCreate 2, 'blue'
+      div class:'gg33 shadow', ->
+        gridOffsetCreate 3, 'blue'
+      div class:'gg33 shadow', ->
+        gridOffsetCreate 4, 'blue'
+
+    h2 "More"
+
+    a href:'http://github.com/evanmoran/smite', "github.com/evanmoran/smite"
+
+
+
+
+
