@@ -1,28 +1,48 @@
 
 @import "mixins/solarized"
 
+body
+  background-color: solarLightBody
+  font-family: "helvetica neue", "helvetica", sans-serif
+
+h1.title
+  text-align: center
+  margin-top: 16px
+  margin-bottom: 1px
+
+.title-g
+  color: #555
+  font-weight: 100
+
+.title-o
+  color: #999
+  font-weight: 100
+
+.subtitle
+  color: black
+  text-transform: uppercase
+  font-weight: 200
+  font-size: 15px
+  text-align: center
+  margin 0 -20px 0 -23px
+  padding-bottom: 41px
+  border-bottom: 1px solid #ccc
+
+
+h2
+  color: #444
+  font-weight: 200
+  font-size: 1.1em
+
+a
+  color: solarBlue
+  text-decoration: none
+  &:hover
+    text-decoration: underline
+
 .gg
   background-color: white
   box-shadow: 0px 0px 6px 1px #AAA
-
-.watch-img
-  width: 90px
-  height: 150px
-  display: inline-block
-
-.watch-css
-  background-image: smiteImage('watch2.jpg')
-  background-size:90px 150px
-  width: 90px
-  height: 150px
-  display: inline-block
-
-.watch-css-inline
-  background-image: smiteImageInline('watch3.jpg')
-  background-size:90px 150px
-  width: 90px
-  height: 150px
-  display: inline-block
 
 gridWithShadow(color)
   text-align: center

@@ -20,15 +20,16 @@ $(SCRIPTS_DIR)/%.js: $(SRC_DIR)/%.coffee
 	coffee -o $(SCRIPTS_DIR) -c $<
 
 $(STYLES_DIR)/%.css: $(SRC_DIR)/%.styl
-	stylus -o $(STYLES_DIR) -i $(NIB_PATH) $<
+	stylus -o $(STYLES_DIR) -I $(NIB_PATH) $<
 
 watch: watch_templates watch_scripts watch_styles
 
 watch_templates:
-	coffeecup -o $(TEMPLATES_DIR) -w $(SRC_DIR)/*.coffeecup &
+	coffeecup -o $(TEMPLATES_DIR) -w $(SRC_DIR)/*.coffeecup
 
 watch_scripts:
-	coffee -o $(SCRIPTS_DIR) -w $(SRC_DIR) &
+	coffee -o $(SCRIPTS_DIR) -w $(SRC_DIR)
 
 watch_styles:
-	stylus -w $(SRC_DIR) -o $(STYLES_DIR) -i $(NIB_PATH) &
+	stylus -w $(SRC_DIR) -o $(STYLES_DIR) -I $(NIB_PATH)
+

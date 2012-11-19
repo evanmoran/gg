@@ -5,14 +5,39 @@
 @title = "gg"
 @description = "A website documenting gg, a css framework."
 @page = 'index'
-@venders = ['jquery.js', 'underscore.js']
+@venders = ['jquery.js', 'underscore.js', 'jquery.fittext.js']
 
 # _
 # --------------------------------------------------------------
 
 ArrayP = Array.prototype
+
+_ = {}
 _ =
-  indexOf: ArrayP.indexOf
+  identity: (v) -> v
+
+  sortedIndex: (array, obj, iterator = _.identity) ->
+    low = 0
+    high = array.length;
+    while low < high
+      mid = (low + high) >> 1;
+      if iterator(array[mid]) < iterator(obj) then low = mid + 1 else high = mid;
+    low
+
+  indexOf: (array, item, isSorted) ->
+    return -1 unless array?
+    if isSorted
+      i = _.sortedIndex array, item
+      return if array[i] == item then i else -1
+
+    if (ArrayP.indexOf && array.indexOf == ArrayP.indexOf)
+      return array.indexOf item
+
+    for v, i in array
+      if v == item
+        return i;
+    -1;
+
 
 # Helpers
 # --------------------------------------------------------------
@@ -57,72 +82,81 @@ html ->
     link rel: 'stylesheet', href: "styles/#{@page}.css"
     script src: "scripts/#{@page}.js"
 
-    # Woot!
+    # Normalize
+    link rel: 'stylesheet', href: "styles/normalize.css"
+
+    # gg
     link rel: 'stylesheet', href: "styles/gg.css"
 
   body ->
 
-    header ->
-      h1 class: 'title', "gg"
+    div class:'gg', ->
+
+      h1 class: 'title', ->
+        span class: 'title-g', "G"
+        span class: 'title-o', "OOD "
+        span class: 'title-g', "G"
+        span class: 'title-o', "RID"
+
       div class:'subtitle', "the end game of grids"
 
-    h3 "GG grid is based on percent"
-    gridCreate pyramid, 'blue'
+      h2 "GG grid is based on percent"
 
+      gridCreate pyramid, 'blue'
 
-    h3 "Thirds (nested)"
+      h2 "Thirds (nested)"
 
-    div class:'row', ->
-      div class:'gg33 shadow gel', ->
-        div "label", "33%"
-        gridCreate pyramid, 'purple'
-      div class:'gg66 shadow', ->
-        div "label", "66%"
-        gridCreate pyramid, 'green'
+      div class:'row', ->
+        div class:'gg33 shadow gel', ->
+          div "label", "33%"
+          gridCreate pyramid, 'purple'
+        div class:'gg66 shadow', ->
+          div "label", "66%"
+          gridCreate pyramid, 'green'
 
-    h3 "Quarters (nested)"
-    div class:'row', ->
-      div class:'gg25 shadow', ->
-        div "label", "25%"
-        gridCreate pyramid, 'purple'
-      div class:'gg75 shadow gel', ->
-        div "label", "75%"
-        gridCreate pyramid, 'green'
+      h2 "Quarters (nested)"
+      div class:'row', ->
+        div class:'gg25 shadow', ->
+          div "label", "25%"
+          gridCreate pyramid, 'purple'
+        div class:'gg75 shadow gel', ->
+          div "label", "75%"
+          gridCreate pyramid, 'green'
 
-    h3 "Wrapping"
-    div class: 'row', ->
-      gridCreate [[50, 25, 25, 33, 66]], 'orange'
+      h2 "Wrapping"
+      div class: 'row', ->
+        gridCreate [[50, 25, 25, 33, 66]], 'orange'
 
-    h3 "Offset"
-    for i in [2,3,4]
-      gridOffsetCreate i, 'blue'
-
-    h3 "Nested offsets"
-    div class:'row', ->
-      div class:'gg33 shadow', ->
-        gridOffsetCreate 2, 'blue'
-      div class:'gg33 shadow', ->
-        gridOffsetCreate 3, 'blue'
-      div class:'gg33 shadow', ->
-        gridOffsetCreate 4, 'blue'
-
-    h3 "Offset (grid)"
-    div class:'gel', ->
+      h2 "Offset"
       for i in [2,3,4]
         gridOffsetCreate i, 'blue'
 
-    h3 "Nested offsets (grid"
-    div class:'row gel', ->
-      div class:'gg33 shadow', ->
-        gridOffsetCreate 2, 'blue'
-      div class:'gg33 shadow', ->
-        gridOffsetCreate 3, 'blue'
-      div class:'gg33 shadow', ->
-        gridOffsetCreate 4, 'blue'
+      h2 "Nested offsets"
+      div class:'row', ->
+        div class:'gg33 shadow', ->
+          gridOffsetCreate 2, 'blue'
+        div class:'gg33 shadow', ->
+          gridOffsetCreate 3, 'blue'
+        div class:'gg33 shadow', ->
+          gridOffsetCreate 4, 'blue'
 
-    h2 "More"
+      h2 "Offset (grid)"
+      div class:'gel', ->
+        for i in [2,3,4]
+          gridOffsetCreate i, 'blue'
 
-    a href:'http://github.com/evanmoran/smite', "github.com/evanmoran/smite"
+      h2 "Nested offsets (grid)"
+      div class:'row gel', ->
+        div class:'gg33 shadow', ->
+          gridOffsetCreate 2, 'blue'
+        div class:'gg33 shadow', ->
+          gridOffsetCreate 3, 'blue'
+        div class:'gg33 shadow', ->
+          gridOffsetCreate 4, 'blue'
+
+      h2 "Source"
+
+      a href:'http://github.com/evanmoran/gg', "http://github.com/evanmoran/gg"
 
 
 
